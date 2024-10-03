@@ -29,8 +29,10 @@ export const App = () => {
 
   return (
             <div className="flex-1 flex flex-col">
+              {/* navbar component */}
           <Navbar />
           <div className="flex h-screen">
+          {/* navbar component */}
             <Sidebar/>
             <div className="flex-1 p-4 overflow-y-auto">
             <Context.Provider value={{data,setData,selectId,setSelectId
