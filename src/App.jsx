@@ -32,7 +32,7 @@ export const App = () => {
               {/* navbar component */}
           <Navbar />
           <div className="flex h-screen">
-          {/* navbar component */}
+          {/* navbar components */}
             <Sidebar/>
             <div className="flex-1 p-4 overflow-y-auto">
             <Context.Provider value={{data,setData,selectId,setSelectId
