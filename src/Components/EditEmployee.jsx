@@ -105,7 +105,6 @@ export const EditEmployee = () => {
               type="file"
               name="Image"
               accept="image/*"
-          // Attach the ref here
               style={{ display: "none" }}
               onChange={handleChange}
             />
@@ -147,27 +146,41 @@ export const EditEmployee = () => {
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
             <label className="block mb-1" htmlFor="department">Department*</label>
-            <input
-              type="text"
-              id="department"
-              name="Department"
-              value={data.Department}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="department"
+  name="Department"
+  value={data.Department}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a department</option>
+  <option value="HR">Human Resources</option>
+  <option value="IT">Information Technology</option>
+  <option value="Finance">Finance</option>
+  <option value="Marketing">Marketing</option>
+  <option value="Sales">Sales</option>
+</select>
+
           </div>
           <div className="w-1/2 pl-2">
             <label className="block mb-1" htmlFor="designation">Designation*</label>
-            <input
-              type="text"
-              id="designation"
-              name="Designation"
-              value={data.Designation}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="designation"
+  name="Designation"
+  value={data.Designation}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a designation</option>
+  <option value="Manager">Manager</option>
+  <option value="Team Lead">Team Lead</option>
+  <option value="Developer">Developer</option>
+  <option value="Designer">Designer</option>
+  <option value="Analyst">Analyst</option>
+</select>
+
           </div>
         </div>
         <div className="flex justify-between mb-4">
@@ -185,15 +198,21 @@ export const EditEmployee = () => {
           </div>
           <div className="w-1/2 pl-2">
             <label className="block mb-1" htmlFor="type">Type*</label>
-            <input
-              type="text"
-              id="type"
-              name="Type"
-              value={data.Type}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="type"
+  name="Type"
+  value={data.Type}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a type</option>
+  <option value="Full-Time">Full-Time</option>
+  <option value="Part-Time">Part-Time</option>
+  <option value="Contract">Contract</option>
+  <option value="Intern">Intern</option>
+</select>
+
           </div>
         </div>
         <div className="flex justify-between mb-4">

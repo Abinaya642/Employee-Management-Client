@@ -137,27 +137,39 @@ export const AddEmployee = () => {
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
             <label className="block mb-1" htmlFor="department">Department*</label>
-            <input
-              type="text"
-              id="department"
-              name="Department"
-              value={employeeData.Department}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="department"
+  name="Department"
+  value={employeeData.Department}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a department</option>
+  <option value="HR">Human Resources</option>
+  <option value="IT">Information Technology</option>
+  <option value="Finance">Finance</option>
+  <option value="Marketing">Marketing</option>
+</select>
+
           </div>
           <div className="w-1/2 pl-2">
             <label className="block mb-1" htmlFor="designation">Designation*</label>
-            <input
-              type="text"
-              id="designation"
-              name="Designation"
-              value={employeeData.Designation}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="designation"
+  name="Designation"
+  value={employeeData.Designation}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a designation</option>
+  <option value="Manager">Manager</option>
+  <option value="Developer">Developer</option>
+  <option value="Analyst">Analyst</option>
+  <option value="Designer">Designer</option>
+</select>
+
           </div>
         </div>
         <div className="flex justify-between mb-4">
@@ -175,15 +187,21 @@ export const AddEmployee = () => {
           </div>
           <div className="w-1/2 pl-2">
             <label className="block mb-1" htmlFor="type">Type*</label>
-            <input
-              type="text"
-              id="type"
-              name="Type"
-              value={employeeData.Type}
-              onChange={handleChange}
-              required
-              className="border rounded w-full p-2"
-            />
+            <select
+  id="type"
+  name="Type"
+  value={employeeData.Type}
+  onChange={handleChange}
+  required
+  className="border rounded w-full p-2"
+>
+  <option value="">Select a type</option>
+  <option value="Full-Time">Full-Time</option>
+  <option value="Part-Time">Part-Time</option>
+  <option value="Contract">Contract</option>
+  <option value="Intern">Intern</option>
+</select>
+
           </div>
         </div>
         <div className="flex justify-between mb-4">
