@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
-import Context from '../MyContext/Context';
-import axios from 'axios';
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
+import Context from "../MyContext/Context";
+import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -18,7 +18,9 @@ export const EmployeeStore = () => {
 
   const fetchdata = () => {
     axios
-      .get("http://localhost:4050/employee/getAll")
+      .get(
+        "https://employee-management-server-i9vw.onrender.com/employee/getAll"
+      )
       .then((res) => {
         setData(res.data.data);
         setFilteremp(res.data.data);
@@ -54,7 +56,9 @@ export const EmployeeStore = () => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:4050/employee/delete/${selectId}`)
+      .delete(
+        `https://employee-management-server-i9vw.onrender.com/employee/delete/${selectId}`
+      )
       .then((res) => {
         // toast.success(res.data.message);
         fetchdata();
@@ -120,15 +124,21 @@ export const EmployeeStore = () => {
                   <td>
                     <button
                       onClick={() => handleViewClick(employee._id)}
-                      className="text-gray-500 mr-2 ml-4"><FaEye />
+                      className="text-gray-500 mr-2 ml-4"
+                    >
+                      <FaEye />
                     </button>
                     <button
                       onClick={() => handleEditClick(employee._id)}
-                      className="text-gray-500 mr-2"><FaEdit />
+                      className="text-gray-500 mr-2"
+                    >
+                      <FaEdit />
                     </button>
                     <button
                       onClick={() => handleDeleteClick(employee._id)}
-                      className="text-gray-500"><FaTrash />
+                      className="text-gray-500"
+                    >
+                      <FaTrash />
                     </button>
                   </td>
                 </tr>
@@ -150,7 +160,9 @@ export const EmployeeStore = () => {
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-600 bg-opacity-50">
             <div className="bg-white p-6 rounded shadow-md w-1/3">
               <h3 className="text-lg font-bold mb-4">Delete Employee</h3>
-              <p className="mb-4">Are you sure you want to delete this employee?</p>
+              <p className="mb-4">
+                Are you sure you want to delete this employee?
+              </p>
               <div className="flex justify-end">
                 <button
                   onClick={() => setShowModal(false)}
@@ -172,5 +184,3 @@ export const EmployeeStore = () => {
     </>
   );
 };
-
-

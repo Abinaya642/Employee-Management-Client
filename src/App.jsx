@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import { EmployeeStore } from "./Components/EmployeeStore";
 import { AddEmployee } from "./Components/AddEmployee";
@@ -26,17 +26,15 @@ export const App = () => {
   })
   const [selectId,setSelectId]=useState("");
 
-
   return (
             <div className="flex-1 flex flex-col">
-              {/* navbar component */}
+              {/* Navbar component */}
           <Navbar />
           <div className="flex h-screen">
-          {/* navbar components */}
+          {/* Sidebar components */}
             <Sidebar/>
             <div className="flex-1 p-4 overflow-y-auto">
-            <Context.Provider value={{data,setData,selectId,setSelectId
-              }}>
+            <Context.Provider value={{data,setData,selectId,setSelectId}}>
              
               <Routes>
                 <Route path="/" element={<EmployeeStore />}></Route>

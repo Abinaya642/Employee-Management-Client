@@ -1,17 +1,17 @@
 import React, { useState, useRef } from "react";
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export const AddEmployee = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [employeeData, setEmployeeData] = useState({
-    EmployeeName: '',
-    EmployeeID: '',
-    Department: '',
-    Designation: '',
-    Project: '',
-    Type: '',
-    Status: '',
+    EmployeeName: "",
+    EmployeeID: "",
+    Department: "",
+    Designation: "",
+    Project: "",
+    Type: "",
+    Status: "",
     Image: null,
   });
 
@@ -20,8 +20,8 @@ export const AddEmployee = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
-    if (name === 'Image') {  
+
+    if (name === "Image") {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -30,15 +30,12 @@ export const AddEmployee = () => {
         };
         reader.readAsDataURL(file); // Convert image file to base64
         setEmployeeData((prevData) => ({ ...prevData, Image: file })); // Update employee data
-        navigate('/')
       } else {
         setImagePreview(null);
         setEmployeeData((prevData) => ({ ...prevData, Image: null }));
-        navigate('/')
       }
     } else {
       setEmployeeData((prevData) => ({ ...prevData, [name]: value }));
-      navigate('/')
     }
   };
 
@@ -49,25 +46,33 @@ export const AddEmployee = () => {
       formdata.append(key, employeeData[key]);
     }
     try {
-      const response = await axios.post('http://localhost:4050/employee/create', formdata, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
+      const response = await axios.post(
+        "https://employee-management-server-i9vw.onrender.com/employee/create",
+        formdata,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       console.log("Employee Added:", response.data);
       handleCancel();
+      navigate("/");
     } catch (error) {
-      console.error('Error adding employee:', error.response ? error.response.data : error.message);
+      console.error(
+        "Error adding employee:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
 
   const handleCancel = () => {
     setEmployeeData({
-      EmployeeName: '',
-      EmployeeID: '',
-      Department: '',
-      Designation: '',
-      Project: '',
-      Type: '',
-      Status: '',
+      EmployeeName: "",
+      EmployeeID: "",
+      Department: "",
+      Designation: "",
+      Project: "",
+      Type: "",
+      Status: "",
       Image: null,
     });
     setImagePreview(null);
@@ -75,17 +80,30 @@ export const AddEmployee = () => {
 
   return (
     <div className="">
-      <div className="flex items-center mb-2 cursor-pointer" onClick={handleCancel}>
-        <Link to={'/'}>
+      <div
+        className="flex items-center mb-2 cursor-pointer"
+        onClick={handleCancel}
+      >
+        <Link to={"/"}>
           <span className="material-icons mr-2 text-3xl mt-1">arrow_back</span>
         </Link>
         <h1 className="text-3xl font-bold">Add New Employee</h1>
       </div>
-      <form onSubmit={handleSubmit} className="bg-white p-6 border rounded shadow-md">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 border rounded shadow-md"
+      >
         <div className="mb-4">
-          <label className="custum-file-upload" onClick={() => document.getElementById("Image").click()} >
+          <label
+            className="custum-file-upload"
+            onClick={() => document.getElementById("Image").click()}
+          >
             {imagePreview ? (
-              <img src={imagePreview} alt="Preview" className="h-32 w-32 object-cover rounded border" />
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="h-32 w-32 object-cover rounded border"
+              />
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +130,9 @@ export const AddEmployee = () => {
         </div>
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
-            <label className="block mb-1" htmlFor="name">Employee Name*</label>
+            <label className="block mb-1" htmlFor="name">
+              Employee Name*
+            </label>
             <input
               type="text"
               id="name"
@@ -124,7 +144,9 @@ export const AddEmployee = () => {
             />
           </div>
           <div className="w-1/2 pl-2">
-            <label className="block mb-1" htmlFor="employeeId">Employee ID*</label>
+            <label className="block mb-1" htmlFor="employeeId">
+              Employee ID*
+            </label>
             <input
               type="text"
               id="employeeId"
@@ -138,45 +160,49 @@ export const AddEmployee = () => {
         </div>
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
-            <label className="block mb-1" htmlFor="department">Department*</label>
+            <label className="block mb-1" htmlFor="department">
+              Department*
+            </label>
             <select
-  id="department"
-  name="Department"
-  value={employeeData.Department}
-  onChange={handleChange}
-  required
-  className="border rounded w-full p-2"
->
-  <option value="">Select a department</option>
-  <option value="HR">Human Resources</option>
-  <option value="IT">Information Technology</option>
-  <option value="Finance">Finance</option>
-  <option value="Marketing">Marketing</option>
-</select>
-
+              id="department"
+              name="Department"
+              value={employeeData.Department}
+              onChange={handleChange}
+              required
+              className="border rounded w-full p-2"
+            >
+              <option value="">Select a department</option>
+              <option value="HR">Human Resources</option>
+              <option value="IT">Information Technology</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+            </select>
           </div>
           <div className="w-1/2 pl-2">
-            <label className="block mb-1" htmlFor="designation">Designation*</label>
+            <label className="block mb-1" htmlFor="designation">
+              Designation*
+            </label>
             <select
-  id="designation"
-  name="Designation"
-  value={employeeData.Designation}
-  onChange={handleChange}
-  required
-  className="border rounded w-full p-2"
->
-  <option value="">Select a designation</option>
-  <option value="Manager">Manager</option>
-  <option value="Developer">Developer</option>
-  <option value="Analyst">Analyst</option>
-  <option value="Designer">Designer</option>
-</select>
-
+              id="designation"
+              name="Designation"
+              value={employeeData.Designation}
+              onChange={handleChange}
+              required
+              className="border rounded w-full p-2"
+            >
+              <option value="">Select a designation</option>
+              <option value="Manager">Manager</option>
+              <option value="Developer">Developer</option>
+              <option value="Analyst">Analyst</option>
+              <option value="Designer">Designer</option>
+            </select>
           </div>
         </div>
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
-            <label className="block mb-1" htmlFor="project">Project*</label>
+            <label className="block mb-1" htmlFor="project">
+              Project*
+            </label>
             <input
               type="text"
               id="project"
@@ -188,27 +214,30 @@ export const AddEmployee = () => {
             />
           </div>
           <div className="w-1/2 pl-2">
-            <label className="block mb-1" htmlFor="type">Type*</label>
+            <label className="block mb-1" htmlFor="type">
+              Type*
+            </label>
             <select
-  id="type"
-  name="Type"
-  value={employeeData.Type}
-  onChange={handleChange}
-  required
-  className="border rounded w-full p-2"
->
-  <option value="">Select a type</option>
-  <option value="Full-Time">Full-Time</option>
-  <option value="Part-Time">Part-Time</option>
-  <option value="Contract">Contract</option>
-  <option value="Intern">Intern</option>
-</select>
-
+              id="type"
+              name="Type"
+              value={employeeData.Type}
+              onChange={handleChange}
+              required
+              className="border rounded w-full p-2"
+            >
+              <option value="">Select a type</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Contract">Contract</option>
+              <option value="Intern">Intern</option>
+            </select>
           </div>
         </div>
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
-            <label className="block mb-1" htmlFor="status">Status*</label>
+            <label className="block mb-1" htmlFor="status">
+              Status*
+            </label>
             <input
               type="text"
               id="status"
@@ -221,10 +250,17 @@ export const AddEmployee = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button type="reset" onClick={handleCancel} className="bg-gray-300 text-black py-2 px-4 mr-3 rounded">
+          <button
+            type="reset"
+            onClick={handleCancel}
+            className="bg-gray-300 text-black py-2 px-4 mr-3 rounded"
+          >
             Cancel
           </button>
-          <button type="submit" className="bg-blue-500 text-white py-2 px-4 mr-3 rounded">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white py-2 px-4 mr-3 rounded"
+          >
             Confirm
           </button>
         </div>
