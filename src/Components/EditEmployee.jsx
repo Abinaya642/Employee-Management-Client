@@ -26,12 +26,12 @@ export const EditEmployee = () => {
 
   const handleChange = (e) => {
     const { name, value, files, type } = e.target;
-
-    // If file is uploaded (for image input)
+  
     if (type === "file" && files.length > 0) {
       const file = files[0];
       const reader = new FileReader();
       reader.onload = () => {
+        console.log("Image loaded:", reader.result); // Check the image data
         setImagePreview(reader.result); // Set image preview for UI
       };
       reader.readAsDataURL(file); // Convert image file to base64
@@ -40,13 +40,13 @@ export const EditEmployee = () => {
         [name]: file, // Store file in the data state
       }));
     } else {
-      // For other inputs
       setData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
     }
   };
+  
 
   // Handle form submission
   const handleSubmit = async (e) => {
