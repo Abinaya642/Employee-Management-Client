@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const AddEmployee = () => {
+  const navigate=useNavigate();
   const [employeeData, setEmployeeData] = useState({
     EmployeeName: '',
     EmployeeID: '',
@@ -29,16 +30,17 @@ export const AddEmployee = () => {
         };
         reader.readAsDataURL(file); // Convert image file to base64
         setEmployeeData((prevData) => ({ ...prevData, Image: file })); // Update employee data
+        navigate('/')
       } else {
         setImagePreview(null);
         setEmployeeData((prevData) => ({ ...prevData, Image: null }));
+        navigate('/')
       }
     } else {
       setEmployeeData((prevData) => ({ ...prevData, [name]: value }));
+      navigate('/')
     }
   };
-
- 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
