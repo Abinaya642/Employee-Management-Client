@@ -81,6 +81,7 @@ export const EditEmployee = () => {
       navigate("/"); // Redirect after successful update
     } catch (error) {
       toast.error(error.message);
+      console.error("Error during update:", error);
     } finally {
       setLoading(false); // Stop loading
     }
