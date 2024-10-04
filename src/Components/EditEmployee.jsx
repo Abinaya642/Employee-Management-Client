@@ -100,7 +100,7 @@ export const EditEmployee = () => {
       >
         <div className="mb-4">
   <label className="block mb-1 cursor-pointer">
-    Uploaded Image*
+    Click here to upload different Image....
     <input
       type="file"
       name="Image"
