@@ -77,7 +77,7 @@ export const EditEmployee = () => {
           },
         }
       );
-      toast.success(response.data.message);
+      // toast.success(response.data.message);
       navigate("/"); // Redirect after successful update
     } catch (error) {
       toast.error(error.message);
