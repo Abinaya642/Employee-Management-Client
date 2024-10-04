@@ -77,7 +77,6 @@ export const EditEmployee = () => {
           },
         }
       );
-      // toast.success(response.data.message);
       navigate("/"); // Redirect after successful update
     } catch (error) {
       toast.error(error.message);
@@ -110,7 +109,7 @@ export const EditEmployee = () => {
               onChange={handleChange}
             />
           </label>
-          {imagePreview && (
+          { (
             <img
               src={imagePreview}
               alt="Preview"

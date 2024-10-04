@@ -27,12 +27,6 @@ export const ViewEmployee = () => {
     <form className="bg-white p-6 border rounded shadow-md">
       <div className="mb-4">
         <label className="block mb-1" htmlFor="image">Uploaded Image</label>
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          className="border rounded w-full p-2"
-        />
         {
         (
           <img
