@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 export const AddEmployee = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [employeeData, setEmployeeData] = useState({
     EmployeeName: "",
     EmployeeID: "",
@@ -53,13 +53,13 @@ export const AddEmployee = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      console.log("Employee Added:", response.data);
+
 
       navigate("/");
     } catch (error) {
       console.error(
         "Error adding employee:",
-        error.response ? error.response.data : error.message
+
       );
     }
   };
