@@ -54,7 +54,7 @@ export const AddEmployee = () => {
         }
       );
       console.log("Employee Added:", response.data);
-      handleCancel();
+
       navigate("/");
     } catch (error) {
       console.error(
