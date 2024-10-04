@@ -78,7 +78,7 @@ export const EmployeeStore = () => {
         <div className="flex justify-between mb-4">
           <input
             type="text"
-            placeholder="Search Employees"
+            placeholder="Search Employees by Name"
             className="border rounded p-2 w-1/2"
             onChange={handleSearch}
           />
