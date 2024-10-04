@@ -99,24 +99,24 @@ export const EditEmployee = () => {
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
-          <label className="block mb-1 cursor-pointer">
-            Uploaded Image*
-            <input
-              type="file"
-              name="Image"
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={handleChange}
-            />
-          </label>
-          { (
-            <img
-              src={imagePreview}
-              alt="Preview"
-              className="mt-2 h-32 w-32 object-cover rounded border"
-            />
-          )}
-        </div>
+  <label className="block mb-1 cursor-pointer">
+    Uploaded Image*
+    <input
+      type="file"
+      name="Image"
+      accept="image/*"
+      style={{ display: "none" }}
+      onChange={handleChange}
+    />
+  </label>
+  {imagePreview && ( // Check if imagePreview is defined
+    <img
+      src={imagePreview}
+      alt="Preview"
+      className="mt-2 h-32 w-32 object-cover rounded border"
+    />
+  )}
+</div>
         <div className="flex justify-between mb-4">
           <div className="w-1/2 pr-2">
             <label className="block mb-1" htmlFor="name">
